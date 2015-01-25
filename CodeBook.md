@@ -107,10 +107,10 @@ The numeric vector contains mean and standard deviation data on signals from
 * Body Gyroscope Magnitude
 
 The column names for the numeric vector are constructed in the following way (for example, "timeBodyAccelerometer-mean-X"):
-*1. First part denotes the domain: "time" or "frequency",
-*2. The second part comes from the signal type (in the provided example "BodyAccelerometer"),
-*3. The third part shows whether it is a mean or a standard deviation ("-mean-" or "-std-").
-*4. The fourth part ("-X", "-Y", "-Z") denotes the coordinate along which the quantity has been measured.
+* First part denotes the domain: "time" or "frequency",
+* The second part comes from the signal type (in the provided example "BodyAccelerometer"),
+* The third part shows whether it is a mean or a standard deviation ("-mean-" or "-std-").
+* The fourth part ("-X", "-Y", "-Z") denotes the coordinate along which the quantity has been measured.
 
 References
 ----------
