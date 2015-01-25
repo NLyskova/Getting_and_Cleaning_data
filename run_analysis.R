@@ -35,7 +35,8 @@ merged.dataset <- cbind(data.X,data.Subject,data.Y)
 # 2. Extract only the measurements on the mean and standard deviation for each measurement. 
 mean.and.std.X <- grep("mean\\(\\)|std\\(\\)",data.X.Names$V2,ignore.case=FALSE)
 mean.and.std.dataset <- merged.dataset[,mean.and.std.X]
-
+merged.dataset <- cbind(data.Subject,data.Y,mean.and.std.dataset)
+                        
 # 3. Use descriptive activity names to name the activities in the data set.
 Activity.Labels  <- read.table(file.path(path.dataset, "activity_labels.txt" ),header = FALSE)
 #Activity.Labels
