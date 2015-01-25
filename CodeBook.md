@@ -61,10 +61,10 @@ bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of e
 angle(): Angle between to vectors.
 
 
-###Data Transformation
+### Data Transformation
 Data manipulation is done with the run_analysis.R script. As a result a tidy data set is produced.
 
-### Section 1. Merge the training and the test sets to create one data set.
+#### Section 1. Merge the training and the test sets to create one data set.
 After downloading and unzipping the raw data, read into tables the data located in
 * y_test.txt
 * y_train.txt
@@ -75,20 +75,42 @@ After downloading and unzipping the raw data, read into tables the data located 
 
 Test and training data (X_test.txt, X_train.txt), subject ids (subject_test.txt, subject_train.txt) and activity ids (y_test.txt, y_train.txt) are merged together to obtain one single data set. Activity variables are labelled with the names according to features.txt.
 
-## Section 2. Extract only the measurements on the mean and standard deviation for each measurement. 
+#### Section 2. Extract only the measurements on the mean and standard deviation for each measurement. 
 
 Subset the merged data set  to keep only activity variables (columns) with the measurements on the mean (variables with labels that contain "mean") and standard deviation (variables with labels that contain "std").
 
-## Section 3. Use descriptive activity names to name the activities in the data set
+#### Section 3. Use descriptive activity names to name the activities in the data set
 
 Values (numbers from 1 to 6) in the "Activity" column in the merged data set are changed with descriptive activity names (Walking, Wlking Upstairs, Walking Downstairs, Laying, Sitting, Standing).
 
-## Section 4. Appropriately label the data set with descriptive activity names.
+#### Section 4. Appropriately label the data set with descriptive activity names.
 'gsub' function is used for pattern replacement to ptoduce more descriptive data labels.
 
-## Section 5. Create a second, independent tidy data set with the average of each variable for each activity and each subject.
+#### Section 5. Create a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 A final tidy data set where numeric variables are averaged for each activity and each subject is created. For this step the "data.table" packages is used.
+
+The tidy data set contains a header, 180 rows and 68 columns. The columns are the following:
+
+* An identifier of the subject who carried out the experiment (__Volunteer__): numbers from 1 to 30
+* Type of activity (__Activity__): Walking, Wlking Upstairs, Walking Downstairs, Laying, Sitting, Standing
+* A numeric 66-feature vector with time and frequency domain signal variables for X, Y and Z coordinates.  
+
+The numeric vector contains mean and standard deviation data on signals from
+
+* Body Accelerometer
+* Gravity Accelerometer 
+* Body Accelerometer Jerk
+* Body Gyroscope
+* Body Gyroscope Jerk
+* Body Accelerometer Magnitude
+* Body Gyroscope Magnitude
+
+The column names for the numeric vector are constructed in the following way (for example, "timeBodyAccelerometer-mean-X"):
+1. First part denotes the domain: "time" or "frequency",
+2. The second part comes from the signal type (in the provided example "BodyAccelerometer"),
+3. The third part shows whether it is a mean or a standard deviation ("-mean-" or "-std-").
+4. The fourth part ("-X", "-Y", "-Z") denotes the coordinate along which the quantity has been measured.
 
 References
 ----------
